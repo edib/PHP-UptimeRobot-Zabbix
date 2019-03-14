@@ -57,7 +57,7 @@
                     <description/>
                     <item_prototypes>
                         <item_prototype>
-                            <name>Uptime Robots Sites</name>
+                            <name>{#MONITOR} Status</name>
                             <type>0</type>
                             <snmp_community/>
                             <snmp_oid/>
