@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2019-03-14T12:10:33Z</date>
+    <date>2019-03-15T06:05:48Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -57,7 +57,7 @@
                     <description/>
                     <item_prototypes>
                         <item_prototype>
-                            <name>{#MONITOR} Status</name>
+                            <name>External Check - {#MONITOR}</name>
                             <type>0</type>
                             <snmp_community/>
                             <snmp_oid/>
@@ -84,7 +84,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>It monitors access of {#MONITOR} from internet.</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -117,7 +117,24 @@
                             <master_item/>
                         </item_prototype>
                     </item_prototypes>
-                    <trigger_prototypes/>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <expression>{UptimeRobot Monitors:uptimerobot.state[{#MONITOR}].last()}&lt;&gt;2</expression>
+                            <recovery_mode>0</recovery_mode>
+                            <recovery_expression/>
+                            <name>{#MONITOR} can not be accesses from internet</name>
+                            <correlation_mode>0</correlation_mode>
+                            <correlation_tag/>
+                            <url/>
+                            <status>0</status>
+                            <priority>3</priority>
+                            <description>{#MONITOR} can not be accesses from internet. ISP network service, public DNS, firewall rules etc should be checked.</description>
+                            <type>0</type>
+                            <manual_close>0</manual_close>
+                            <dependencies/>
+                            <tags/>
+                        </trigger_prototype>
+                    </trigger_prototypes>
                     <graph_prototypes/>
                     <host_prototypes/>
                     <jmx_endpoint/>
